@@ -68,7 +68,7 @@ async function run() {
       const result = await coursesCollection.deleteOne({ _id: new ObjectId(req.params.id) });
       res.send(result);
     });
-
+    // Enrollment routes - post and get by user email
     app.post('/enrollments', async (req, res) => {
       const result = await enrollmentsCollection.insertOne(req.body);
       res.send(result);
