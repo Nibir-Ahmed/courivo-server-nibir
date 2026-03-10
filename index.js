@@ -55,7 +55,7 @@ async function run() {
       const result = await coursesCollection.insertOne(req.body);
       res.send(result);
     });
-
+    // PUT and DELETE course routes
     app.put('/courses/:id', async (req, res) => {
       const result = await coursesCollection.updateOne(
         { _id: new ObjectId(req.params.id) },
