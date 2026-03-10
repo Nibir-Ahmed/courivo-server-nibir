@@ -5,15 +5,8 @@ require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 5000;
-
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'http://localhost:5174',
-    'http://localhost:5175',
-    'http://localhost:5176',
-    process.env.CLIENT_URL,
-  ],
+  origin: true,
   credentials: true,
 }));
 app.use(express.json());
@@ -35,7 +28,7 @@ async function run() {
     const db = client.db('courivoDB');
     const coursesCollection = db.collection('courses');
     const enrollmentsCollection = db.collection('enrollments');
-
+    // GET all courses & GET by id
     app.get('/courses', async (req, res) => {
       const { category } = req.query;
       const filter = category ? { category } : {};
