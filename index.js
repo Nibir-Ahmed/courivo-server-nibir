@@ -31,6 +31,7 @@ async function run() {
     // GET all courses & GET by id
     app.get('/courses', async (req, res) => {
       const { category } = req.query;
+      // Filter courses by category query param
       const filter = category ? { category } : {};
       const result = await coursesCollection.find(filter).toArray();
       res.send(result);
