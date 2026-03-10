@@ -50,7 +50,7 @@ async function run() {
       const result = await coursesCollection.findOne({ _id: new ObjectId(req.params.id) });
       res.send(result);
     });
-
+    // POST course with owner email
     app.post('/courses', async (req, res) => {
       const result = await coursesCollection.insertOne(req.body);
       res.send(result);
